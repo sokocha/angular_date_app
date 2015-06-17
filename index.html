@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script type="text/javascript">
+        function DatesController($scope){
+            $scope.dates = [];
+
+            $scope.addDate = function () {
+              $scope.dates.push({
+                date: $scope.dateValue
+              });
+
+              $scope.dateValue = "";
+            };
+        }  
+    </script>
+</head>
+<body>
+    <div ng-controller="DatesController">
+
+      <div id="AddDate">
+        <h4>Add a Date</h4>
+        <input type="date" ng-model="dateValue">
+        <button ng-click="addDate()">Add to List of Dates</button>
+      </div>
+
+      <div id="DateList">
+        <h4>Added Dates</h4>
+
+        <table>
+          <tr ng-repeat="date in dates">
+            <td><b>Date</b>{{date.date}}</td>
+            <td><b>Days from Jan. 1</b></td>
+          </tr>
+        </table>
+
+      </div>
+      
+    </div>
+</body>
+</html>
