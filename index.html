@@ -12,11 +12,22 @@
             $scope.dates = [];
 
             $scope.addDate = function () {
+
+              var submitted_date = moment($scope.dateValue);
+              var formatted_submission = moment(submitted_date).format("MMM Do YY")
+              var year = moment($scope.dateValue).get('year');
+              var jan1 = new Date(year,0,01);
+              var formatted_jan1 = moment(jan1).format("MMM Do YY");
+              var difference = parseInt(submitted_date - jan1)/86400000;
+              
+           
+
               $scope.dates.push({
-                date: $scope.dateValue,
-                year: moment($scope.dateValue).get('year')
-                
+                date: formatted_submission,
+                jan1: formatted_jan1,
+                diff: difference
               });
+                
 
               $scope.dateValue = "";
             };
@@ -40,8 +51,8 @@
         <table>
           <tr ng-repeat="date in dates">
             <td><b>Date: </b>{{date.date}}</td>
-            <td><b>Year: </b>{{date.year}}</td>
-  
+            <td><b>New Year:  </b>{{date.jan1}}</td>
+            <td><b>Difference in Days:  </b>{{date.diff}}</td>
           </tr>
         </table>
 
