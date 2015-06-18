@@ -14,7 +14,8 @@
             $scope.addDate = function () {
               $scope.dates.push({
                 date: $scope.dateValue,
-                year: moment($scope.dateValue.date).get('year')
+                year: moment($scope.dateValue).get('year')
+                
               });
 
               $scope.dateValue = "";
@@ -40,6 +41,7 @@
           <tr ng-repeat="date in dates">
             <td><b>Date: </b>{{date.date}}</td>
             <td><b>Year: </b>{{date.year}}</td>
+  
           </tr>
         </table>
 
