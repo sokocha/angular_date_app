@@ -59,12 +59,13 @@
         <h4>Added Dates</h4>
 
         <table>
+          <tr><td><b>Total Days:</b></td> <td>{{subTotal}}</td><td></td></tr>
           <tr ng-repeat="date in dates">
             <td><b>Date: </b>{{date.date}}</td>
             <td><b>New Year:  </b>{{date.jan1}}</td>
             <td><b>Difference in Days:  </b>{{date.diff}}</td>
           </tr>
-          <tr><td><b>Total Days:  </b>{{subTotal}}</td></tr>
+          
         </table>
 
       </div>
