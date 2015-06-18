@@ -19,18 +19,28 @@
               var jan1 = new Date(year,0,01);
               var formatted_jan1 = moment(jan1).format("MMM Do YY");
               var difference = parseInt(submitted_date - jan1)/86400000;
-              
-           
 
               $scope.dates.push({
                 date: formatted_submission,
                 jan1: formatted_jan1,
                 diff: difference
-              });
                 
-
+              });
+              
               $scope.dateValue = "";
             };
+
+            $scope.$watch('dates', function() {
+              var subTotal = 0;
+
+              $scope.dates.forEach(function(date) {
+                subTotal += date.diff;
+              });
+
+              $scope.subTotal = subTotal;
+            }, true);
+
+
         }  
     </script>
 
@@ -54,6 +64,7 @@
             <td><b>New Year:  </b>{{date.jan1}}</td>
             <td><b>Difference in Days:  </b>{{date.diff}}</td>
           </tr>
+          <tr><td><b>Total Days:  </b>{{subTotal}}</td></tr>
         </table>
 
       </div>
