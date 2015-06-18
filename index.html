@@ -1,20 +1,27 @@
 <!doctype html>
 <html ng-app>
 <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+   
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+
+
     <script type="text/javascript">
         function DatesController($scope){
             $scope.dates = [];
 
             $scope.addDate = function () {
               $scope.dates.push({
-                date: $scope.dateValue
+                date: $scope.dateValue,
+                year: moment($scope.dateValue.date).get('year')
               });
 
               $scope.dateValue = "";
             };
         }  
     </script>
+
 </head>
 <body>
     <div ng-controller="DatesController">
@@ -25,13 +32,14 @@
         <button ng-click="addDate()">Add to List of Dates</button>
       </div>
 
+
       <div id="DateList">
         <h4>Added Dates</h4>
 
         <table>
           <tr ng-repeat="date in dates">
-            <td><b>Date</b>{{date.date}}</td>
-            <td><b>Days from Jan. 1</b></td>
+            <td><b>Date: </b>{{date.date}}</td>
+            <td><b>Year: </b>{{date.year}}</td>
           </tr>
         </table>
 
